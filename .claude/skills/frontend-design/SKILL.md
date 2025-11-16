@@ -33,31 +33,6 @@ Focus on:
 - **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
 - **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
 
-## Visual Hierarchy & Functional UI Elements
-
-Balance aesthetic effects with functional clarity:
-
-- **Interactive Elements Must Pop**: Buttons, links, and interactive controls need sufficient visual weight and contrast to be immediately discoverable. Don't let trendy effects (glassmorphism, subtle transparencies) compromise usability.
-
-- **Hierarchy Through Contrast**: Create clear visual hierarchy using contrast ratios that exceed WCAG AA standards (4.5:1 for normal text, 3:1 for large text and UI components). Aesthetic effects should enhance, not diminish, this hierarchy.
-
-- **Context-Appropriate Effects**:
-  - **Decorative elements**: Can use low opacity, subtle blurs, and atmospheric effects
-  - **Content elements**: Need readable contrast and clear visual separation
-  - **Interactive elements**: Require strong visual presence with obvious affordances (shadows, borders, solid backgrounds)
-
-- **The Glassmorphism Trap**: Semi-transparent backgrounds with backdrop-filter look modern but often fail for functional elements. When using glassmorphism:
-  - Use higher opacity (0.7-0.9) for interactive elements, not 0.2-0.3
-  - Add solid borders or shadows to create edge definition
-  - Ensure sufficient contrast against all possible background states
-  - Consider solid alternatives for critical actions (primary buttons, CTAs)
-
-- **Visual Weight Principles**:
-  - Primary actions: Bold, high-contrast, impossible to miss
-  - Secondary actions: Clear but visually subordinate
-  - Tertiary actions: Subtle but discoverable on focus
-  - Decorative elements: Enhance without competing
-
 **Pattern from Execution**: In a budget tracker with gradient backgrounds, a print button styled with `rgba(255, 255, 255, 0.2)` and glassmorphism blended into the background. Solution: Increase opacity, add solid borders, use drop shadows, or switch to a solid background color that complements the aesthetic while maintaining discernability.
 
 NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.

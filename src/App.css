@@ -4,44 +4,49 @@
 
 .app {
   min-height: 100vh;
-  padding: var(--spacing-2xl) var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-lg);
   animation: fadeIn 0.6s ease-out;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .app-header {
-  max-width: 1600px;
-  margin: 0 auto var(--spacing-3xl);
-  text-align: center;
+  max-width: 100%;
+  margin: 0 0 var(--spacing-xl) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   animation: fadeIn 0.8s ease-out;
 }
 
-.app-header h1 {
+.app-header-content h1 {
   background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-emerald-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: var(--spacing-sm);
+  margin: 0;
   font-weight: 800;
   letter-spacing: -0.03em;
+  font-size: 2rem;
 }
 
 .app-subtitle {
   font-family: var(--font-body);
-  font-size: 1.125rem;
-  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin: 0;
+  margin: 4px 0 0 0;
 }
 
 .app-main {
-  max-width: 1600px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 /* ====================================
-   BUDGET OVERVIEW
+   BUDGET OVERVIEW (Deprecated - using MetricsGrid)
    ==================================== */
 
 .budget-overview {
@@ -49,10 +54,10 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
-  margin-bottom: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
   animation: fadeIn 1s ease-out 0.2s backwards;
 }
 
@@ -196,9 +201,9 @@
 
 .app-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--spacing-2xl);
-  margin-bottom: var(--spacing-2xl);
+  grid-template-columns: 400px 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 @media (max-width: 1200px) {
@@ -216,29 +221,29 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
   animation: slideInLeft 0.8s ease-out 0.4s backwards;
   height: fit-content;
 }
 
 .category-breakdown h2 {
-  margin: 0 0 var(--spacing-xl) 0;
+  margin: 0 0 var(--spacing-lg) 0;
   color: var(--color-text-primary);
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 700;
 }
 
 .category-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-sm);
 }
 
 .category-item {
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   transition: all var(--transition-base);
@@ -330,16 +335,16 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
   animation: slideInRight 0.8s ease-out 0.4s backwards;
 }
 
 .transactions-list h2 {
-  margin: 0 0 var(--spacing-xl) 0;
+  margin: 0 0 var(--spacing-lg) 0;
   color: var(--color-text-primary);
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 700;
 }
 
@@ -361,14 +366,14 @@
 
 .transactions-table th {
   text-align: left;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   color: var(--color-text-tertiary);
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   font-family: var(--font-display);
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   white-space: nowrap;
 }
 
@@ -399,7 +404,7 @@
 }
 
 .transaction-row td {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   white-space: nowrap;
 }
 

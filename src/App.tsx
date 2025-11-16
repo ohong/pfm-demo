@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
-import { BudgetOverview } from './components/BudgetOverview';
+import { useMemo, useState, useEffect } from 'react';
 import { CategoryBreakdown } from './components/CategoryBreakdown';
 import { TransactionsList } from './components/TransactionsList';
+import { ThemeToggle } from './components/ThemeToggle';
+import { MetricsGrid } from './components/MetricsGrid';
 import { Transaction, BudgetSummary, CategoryTotal } from './types';
 import './App.css';
 
@@ -138,6 +139,21 @@ const sampleTransactions: Transaction[] = [
 ];
 
 function App() {
+  // Theme state with localStorage persistence
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return (savedTheme as 'light' | 'dark') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   // Calculate budget summary
   const budgetSummary: BudgetSummary = useMemo(() => {
     const totalIncome = sampleTransactions
@@ -157,6 +173,15 @@ function App() {
       isOverBudget: balance < 0,
     };
   }, []);
+
+  // Additional metrics for high-earners
+  const savingsRate = useMemo(() => {
+    const { totalIncome, totalExpenses } = budgetSummary;
+    return totalIncome > 0 ? ((totalIncome - totalExpenses) / totalIncome) * 100 : 0;
+  }, [budgetSummary]);
+
+  const netWorth = 1250000; // Mock data - would come from backend
+  const monthlyTrend = 4.2; // Mock data - percentage growth
 
   // Calculate category breakdown
   const categoryTotals: CategoryTotal[] = useMemo(() => {
@@ -188,13 +213,24 @@ function App() {
 
   return (
     <div className="app">
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
+
       <header className="app-header">
-        <h1>Apex Wealth Intelligence</h1>
-        <p className="app-subtitle">November 2025 Portfolio Overview</p>
+        <div className="app-header-content">
+          <h1>Apex Wealth Intelligence</h1>
+          <p className="app-subtitle">November 2025 Portfolio Overview</p>
+        </div>
       </header>
 
       <main className="app-main">
-        <BudgetOverview summary={budgetSummary} />
+        <MetricsGrid
+          totalIncome={budgetSummary.totalIncome}
+          totalExpenses={budgetSummary.totalExpenses}
+          balance={budgetSummary.balance}
+          savingsRate={savingsRate}
+          monthlyTrend={monthlyTrend}
+          netWorth={netWorth}
+        />
 
         <div className="app-grid">
           <CategoryBreakdown categories={categoryTotals} />

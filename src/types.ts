@@ -1,6 +1,7 @@
 export type Category =
   | 'groceries'
   | 'rent'
+  | 'housing'
   | 'entertainment'
   | 'utilities'
   | 'transportation'
@@ -8,6 +9,11 @@ export type Category =
   | 'dining'
   | 'shopping'
   | 'income'
+  | 'investments'
+  | 'wellness'
+  | 'travel'
+  | 'lifestyle'
+  | 'business'
   | 'other';
 
 export type TransactionType = 'income' | 'expense';

@@ -5,9 +5,17 @@ interface TransactionsListProps {
 }
 
 export function TransactionsList({ transactions }: TransactionsListProps) {
+  // Format large numbers with commas
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  };
+
   return (
     <div className="transactions-list">
-      <h2>Recent Transactions</h2>
+      <h2>Transaction History</h2>
       <div className="transactions-container">
         {transactions.length === 0 ? (
           <p className="no-transactions">No transactions yet</p>
@@ -22,8 +30,12 @@ export function TransactionsList({ transactions }: TransactionsListProps) {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((transaction) => (
-                <tr key={transaction.id} className={`transaction-row ${transaction.type}`}>
+              {transactions.map((transaction, index) => (
+                <tr
+                  key={transaction.id}
+                  className={`transaction-row ${transaction.type}`}
+                  style={{ '--row-index': index } as React.CSSProperties}
+                >
                   <td className="transaction-date">
                     {formatDate(transaction.date)}
                   </td>
@@ -35,7 +47,7 @@ export function TransactionsList({ transactions }: TransactionsListProps) {
                   </td>
                   <td className={`transaction-amount ${transaction.type}`}>
                     {transaction.type === 'income' ? '+' : '-'}$
-                    {transaction.amount.toFixed(2)}
+                    {formatCurrency(transaction.amount)}
                   </td>
                 </tr>
               ))}
